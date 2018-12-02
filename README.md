@@ -1,12 +1,10 @@
-Spring provides <code>GeneratedKeyHolder</code> (<a href="http://docs.spring.io/spring/docs/3.2.8.RELEASE/javadoc-api/org/springframework/jdbc/support/GeneratedKeyHolder.html" target="_blank">Java Doc</a>) class which can be used to retrieve the auto generated values.
-
+Spring provides `GeneratedKeyHolder` ([Java Doc](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jdbc/support/GeneratedKeyHolder.html)) class which can be used to retrieve the auto generated values.
 
 Most of the examples will not contain the whole code and may omit fragments which are not relevant to the example being discussed. The readers can download or view all code from the above link.
 
-
 The following class shows how to retrieve the auto generated key after a new value is added to the table.
 
-<pre>
+```java
 package com.javacreed.examples.spring;
 
 import java.sql.Connection;
@@ -36,15 +34,15 @@ public class ExampleDao {
       }
     };
 
-    <span class="comments">// The newly generated key will be saved in this object</span>
-    <span class="highlight">final KeyHolder holder = new GeneratedKeyHolder();</span>
+    /* The newly generated key will be saved in this object */
+    final KeyHolder holder = new GeneratedKeyHolder();
 
-    jdbcTemplate.update(psc, <span class="highlight">holder</span>);
+    jdbcTemplate.update(psc, holder);
 
-    <span class="highlight">final long newNameId = holder.getKey().longValue();
-    return newNameId;</span>
+    final long newNameId = holder.getKey().longValue();
+    return newNameId;
   }
 }
-</pre>
+```
 
-
+The readers can download or view the code from [https://github.com/javacreed/how-to-get-auto-generated-key-with-jdbctemplate/](https://github.com/javacreed/how-to-get-auto-generated-key-with-jdbctemplate/).
